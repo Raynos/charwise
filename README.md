@@ -1,6 +1,6 @@
-# charwise
+# charwise-compact
 
-like bytewise, except as strings.
+like charwise, except numbers are compact.
 
 codec for js values (including arrays) that preserves lexiographic
 sort order when encoded. (the order is compatible with [bytewise](https://github.com/deanlandolt/bytewise) and thus indexeddb and couchdb,

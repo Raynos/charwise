@@ -1,6 +1,7 @@
 var Buffer = require('buffer').Buffer
 var number = require('./codec/number.js');
 var object = require('./codec/object.js');
+var d64 = require('d64')
 
 var flip = exports.flip = function (n) {
   var s = n.toString()
@@ -63,11 +64,11 @@ exports.boolean = {
 
 exports.binary = {
   encode: function (b) {
-    return 'I'+b.toString('base64')
+    return 'I'+ d64.encode(b)
   },
   decode: function (s) {
     if ('I' === s[0]) {
-      return Buffer.from(s.substring(1), 'base64')
+      return d64.decode(s.substring(1))
     }
   }
 }

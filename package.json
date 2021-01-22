@@ -1,7 +1,7 @@
 {
   "name": "charwise-compact",
   "description": "encode/decode with same encoded sort order as bytewise",
-  "version": "6.0.0",
+  "version": "6.0.1",
   "homepage": "https://github.com/Raynos/charwise-compact",
   "repository": {
     "type": "git",

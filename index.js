@@ -1,7 +1,5 @@
-var Buffer = require('buffer').Buffer
 var number = require('./codec/number.js');
 var object = require('./codec/object.js');
-var d64 = require('d64')
 
 var flip = exports.flip = function (n) {
   var s = n.toString()
@@ -38,8 +36,6 @@ exports.string = {
 }
 
 exports.encode = function (t) {
-  if (Buffer.isBuffer(t)) return exports.binary.encode(t)
-
   return exports[typeof t].encode(t)
 }
 
@@ -62,17 +58,6 @@ exports.boolean = {
   }
 }
 
-exports.binary = {
-  encode: function (b) {
-    return 'I'+ d64.encode(b)
-  },
-  decode: function (s) {
-    if ('I' === s[0]) {
-      return d64.decode(s.substring(1))
-    }
-  }
-}
-
 exports.undefined = {
   encode: function (b) {
     return 'L'
@@ -90,7 +75,7 @@ var decoders = {
   F: exports.number.decode, // number
   // G Date
   // H Date
-  I: exports.binary.decode, // Buffer
+  // I Buffer
   J: exports.string.decode, // String
   K: exports.object.decode, // Array
   L: exports.undefined.decode, // undefined
